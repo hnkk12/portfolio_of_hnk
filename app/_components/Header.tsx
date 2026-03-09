@@ -1,16 +1,20 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
+import CVModal from "./CVModal";
+
 function Header() {
+  const [cvModalOpen, setCvModalOpen] = useState(false);
+
   return (
     <div className="p-4 max-w-7xl flex justify-between items-center w-full">
       <div className="flex gap-2 items-center">
@@ -26,8 +30,11 @@ function Header() {
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink className="text-2xl p-2 hover:bg-accent rounded-xl cursor-alias">
-              <Link href={"/cv"}>CV</Link>
+            <NavigationMenuLink
+              className="text-2xl p-2 hover:bg-accent rounded-xl cursor-pointer"
+              onClick={() => setCvModalOpen(true)}
+            >
+              CV
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
@@ -47,6 +54,8 @@ function Header() {
         {" "}
         Feedback{" "}
       </Button>
+
+      <CVModal open={cvModalOpen} onOpenChange={setCvModalOpen} />
     </div>
   );
 }
