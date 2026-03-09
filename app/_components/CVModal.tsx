@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { XIcon } from "lucide-react";
+import { Bone as XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface CVModalProps {
